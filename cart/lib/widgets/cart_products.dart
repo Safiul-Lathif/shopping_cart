@@ -45,36 +45,95 @@ class CartProductCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          CircleAvatar(
-            radius: 40,
-            backgroundImage: NetworkImage(product.imageUrl),
-          ),
-          SizedBox(
-            width: 20,
-          ),
-          Expanded(
-            child: Text(product.name),
-          ),
-          IconButton(
-            onPressed: () {
-              controller.removeProduct(product);
-            },
-            icon: Icon(Icons.remove_circle),
-          ),
-          Text('$quantity'),
-          IconButton(
-            onPressed: () {
-              controller.addProduct(product);
-            },
-            icon: Icon(Icons.add_circle),
-          )
-        ],
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Image.network(
+              Product.products[index].imageUrl,
+              width: 60,
+              height: 60,
+              fit: BoxFit.fill,
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.done_all_outlined,
+                        size: 13,
+                        color: Colors.green,
+                      ),
+                      Text(
+                        product.name,
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    decoration:
+                        BoxDecoration(border: Border.all(color: Colors.blue)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              border: Border(
+                                  right: BorderSide(color: Colors.blue))),
+                          child: IconButton(
+                            onPressed: () {
+                              controller.removeProduct(product);
+                            },
+                            icon: Icon(Icons.remove),
+                          ),
+                        ),
+                        Text('$quantity'),
+                        Container(
+                          decoration: BoxDecoration(
+                              border:
+                                  Border(left: BorderSide(color: Colors.blue))),
+                          child: IconButton(
+                            onPressed: () {
+                              controller.addProduct(product);
+                            },
+                            icon: Icon(Icons.add),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              width: 90,
+            ),
+            Text(
+              '${Product.products[index].price}',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w900,
+              ),
+            ),
+          ],
+        ),
       ),
+    );
+    // ignore: dead_code
+    Divider(
+      height: 0.1,
     );
   }
 }

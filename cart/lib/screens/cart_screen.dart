@@ -16,10 +16,7 @@ class CartScreen extends StatelessWidget {
               style:
                   TextStyle(color: Colors.black, fontWeight: FontWeight.bold))),
       body: Column(
-        children: [
-          CartProducts(),
-          // CartTotal(),
-        ],
+        children: [CartProducts(), Expanded(child: CartTotal())],
       ),
     );
   }
