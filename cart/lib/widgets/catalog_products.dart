@@ -11,8 +11,8 @@ class CatalogProducts extends StatelessWidget {
     return Flexible(
         child: GridView.count(
             crossAxisCount: 3,
-            crossAxisSpacing: 4.0,
-            mainAxisSpacing: 8.0,
+            crossAxisSpacing: 0,
+            mainAxisSpacing: 0,
             children: List.generate(Product.products.length, (index) {
               return Center(
                 child: CatalogProductsCard(index: index),
@@ -31,34 +31,59 @@ class CatalogProductsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      child: Column(
-        children: [
-          CircleAvatar(
-            radius: 40,
-            backgroundImage: NetworkImage(Product.products[index].imageUrl),
-          ),
-          SizedBox(
-            width: 20,
-          ),
-          Text(
-            Product.products[index].name,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
+    return Container(
+      color: Color.fromARGB(255, 248, 245, 245),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: InkWell(
+                onTap: () {
+                  cartController.addProduct(Product.products[index]);
+                },
+                child: Image.network(
+                  Product.products[index].imageUrl,
+                  width: 225,
+                  height: 135,
+                  fit: BoxFit.fill,
+                ),
+              ),
             ),
-          ),
-          Text('${Product.products[index].price}'),
-          IconButton(
-            onPressed: () {
-              cartController.addProduct(Product.products[index]);
-            },
-            icon: Icon(
-              Icons.add_circle,
+            Spacer(
+              flex: 1,
             ),
-          )
-        ],
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(
+                  Icons.add_circle,
+                  size: 13,
+                  color: Colors.green,
+                ),
+                Text(
+                  Product.products[index].name,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w300,
+                    fontSize: 14,
+                  ),
+                ),
+              ],
+            ),
+            Spacer(
+              flex: 2,
+            ),
+            Text(
+              '${Product.products[index].price}',
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w900,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

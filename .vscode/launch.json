@@ -1,0 +1,12 @@
+{
+    "configurations": [
+        
+        {
+            "name": "Flutter (lib/main.dart)",
+            "type": "dart",
+            "request": "launch",
+            "cwd": "cart",
+            "program": "lib/main.dart"
+        }
+    ]
+}
