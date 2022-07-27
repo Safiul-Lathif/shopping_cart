@@ -13,11 +13,11 @@ class CartProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => SizedBox(
-        height: 600,
+        height: 425,
         child: ListView.builder(
             itemCount: controller.products.length,
             itemBuilder: (BuildContext context, int index) {
-              return CartProductCart(
+              return CartProductCard(
                 controller: controller,
                 product: controller.products.keys.toList()[index],
                 quantity: controller.products.values.toList()[index],
@@ -29,13 +29,13 @@ class CartProducts extends StatelessWidget {
   }
 }
 
-class CartProductCart extends StatelessWidget {
+class CartProductCard extends StatelessWidget {
   final CartController controller;
   final Product product;
   final int quantity;
   final int index;
 
-  const CartProductCart({
+  const CartProductCard({
     Key? key,
     required this.controller,
     required this.product,
@@ -47,7 +47,10 @@ class CartProductCart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 15,
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -130,10 +133,6 @@ class CartProductCart extends StatelessWidget {
           ],
         ),
       ),
-    );
-    // ignore: dead_code
-    Divider(
-      height: 0.1,
     );
   }
 }
