@@ -9,7 +9,8 @@ class CartTotal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      () => Container(
+          () => Container(
+            color: Colors.cyan[50],
         padding: const EdgeInsets.symmetric(horizontal: 75),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

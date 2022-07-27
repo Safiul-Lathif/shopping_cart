@@ -1,3 +1,4 @@
+import 'package:cart/widgets/cart_checkout.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../widgets/cart_products.dart';
@@ -12,11 +13,14 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Colors.white,
-          title: Text(" Cart",
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold))),
+          title: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5),
+            child: Text(" Cart",
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+          )),
       body: Column(
-        children: [CartProducts(), Expanded(child: CartTotal())],
+        children: [CartProducts(), Expanded(flex: 1, child: CartTotal()) , CartCheckout()],
       ),
     );
   }
